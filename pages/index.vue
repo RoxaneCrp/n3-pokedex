@@ -6,22 +6,12 @@
     <SearchBar />
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto w-5/6">
-        <div v-for="pokemon in pokemons" :key="pokemon.id" class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div v-for="pokemon in data" :key="pokemon.id" class="bg-white rounded-lg shadow-md overflow-hidden">
             <PokeCard :pokemon="pokemon" />
         </div>
     </div>
 </template>
 
 <script setup>
-    const pokemons = ref([]);
-
-    async function getPokemon() {
-        const response = await fetch('https://pokebuildapi.fr/api/v1/pokemon/limit/10');
-        const responseData = await response.json();
-        pokemons.value = responseData;
-    }
-
-    onMounted(() => {
-        getPokemon();
-    });
+    const { data} = useFetch('https://pokebuildapi.fr/api/v1/pokemon/limit/10', {});
 </script>

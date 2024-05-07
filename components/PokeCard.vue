@@ -11,13 +11,22 @@
         </div>
     </div>
     <div class="flex">
-        <button class="w-full py-2 bg-blue-500 text-white font-semibold">Show</button>
-        <button class="w-full py-2 bg-blue-500 text-white font-semibold">Add to Pokedex</button>
+        <button class="w-full py-2 bg-emerald-600 text-white font-semibold" @click="showPokemon(pokemon.id)">Show</button>
+        <button class="w-full py-2 bg-emerald-600 text-white font-semibold">Add to Pokedex</button>
     </div>
 </template>
 
 <script setup>
     defineProps({
-    pokemon: Object
+        pokemon: Object
     })
+
+    const router = useRouter();
+
+    const idPokemon = useState('idPokemon', () => [])
+
+    function showPokemon(id) {
+        idPokemon.value = id;
+        router.push(`/${id}`);
+    }
 </script>
