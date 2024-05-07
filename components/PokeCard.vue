@@ -12,7 +12,7 @@
     </div>
     <div class="flex">
         <button class="w-full py-2 bg-emerald-600 text-white font-semibold" @click="showPokemon(pokemon.id)">Show</button>
-        <button class="w-full py-2 bg-emerald-600 text-white font-semibold">Add to Pokedex</button>
+        <button class="w-full py-2 bg-emerald-600 text-white font-semibold" @click="addToTeam(pokemon)">Add to Pokedex</button>
     </div>
 </template>
 
@@ -23,10 +23,15 @@
 
     const router = useRouter();
 
-    const idPokemon = useState('idPokemon', () => [])
+    const idPokemon = useState('idPokemon', () => 0)
+    const team = useState('team', () => [])
 
     function showPokemon(id) {
         idPokemon.value = id;
         router.push(`/${id}`);
+    }
+
+    function addToTeam(pokemon) {
+        team.value.push(pokemon);
     }
 </script>
