@@ -32,6 +32,10 @@
     }
 
     function addToTeam(pokemon) {
-        team.value.push(pokemon);
+        if (team.value.length < 6) {
+            team.value.push(pokemon);
+        } else {
+            alert("L'équipe est complète. Tu ne peux pas ajouter plus de 6 Pokemon.");
+        }
     }
 </script>
